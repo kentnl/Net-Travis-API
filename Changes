@@ -1,6 +1,8 @@
 Release history for Net-Travis-API
 
 {{$NEXT}}
+
+0.001000 2014-02-13T17:16:48Z
  - Super Early First Release with minimal utility available.
 
  [Dependencies::Aggregate]
