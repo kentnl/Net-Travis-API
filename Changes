@@ -1,5 +1,10 @@
 Release history for Net-Travis-API
 
 {{$NEXT}}
- - First version.
+ - Super Early First Release with minimal utility available.
+
+ [Dependencies::Aggregate]
+ - 5.10: 44
+ - 5.19: 28
+ - Chokepoint for having Module::Build is presently Module::Runtime
 
