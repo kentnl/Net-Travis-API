@@ -11,10 +11,10 @@ DEVELOPMENT
     At present, most the functionality is lower-level plumbing functions
     which should eventually give way to a higher level API.
 
-    But code endeavours to approach better coverage eventually, and
-    hopefully serve as a better documentation than Travis's own API docs,
-    which were so lacklustre I had to resort to sniffing their websites
-    traffic from my browser to understand what was going on.
+    But code endeavors to approach better coverage eventually, and hopefully
+    serve as a better documentation than Travis's own API docs, which were
+    so lackluster I had to resort to sniffing their websites traffic from my
+    browser to understand what was going on.
 
 AUTHENTICATION
     Presently this module only covers the overhead of getting authentication
@@ -27,7 +27,7 @@ AUTHENTICATION
 
     So, at present, you have several options:
 
-    1. Work with an un-authenticated User Agent.
+    1. Work with an unauthenticated User Agent.
             use Net::Travis::API::UA;
 
             my $ua = Net::Travis::API::UA->new();
@@ -41,8 +41,8 @@ AUTHENTICATION
 
             $ua->get('/users'); # private endpoint
 
-    3. Get an auth token some other way.
-        And avoid incuring an authorization request overhead.
+    3. Get an authorization token some other way.
+        And avoid incurring an authorization request overhead.
 
             use Net::Travis::API::UA;
 
@@ -61,11 +61,4 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
-
-POD ERRORS
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 155:
-        You forgot a '=back' before '=head1'
 

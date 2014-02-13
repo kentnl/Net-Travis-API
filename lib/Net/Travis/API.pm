@@ -1,9 +1,15 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Net::Travis::API;
 $Net::Travis::API::VERSION = '0.001000';
 # ABSTRACT: Low Level Plumbing for travis-ci.org's api
+
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
+
 
 
 
@@ -108,8 +114,8 @@ This code is highly in-development, and is feature incomplete, and does not pres
 
 At present, most the functionality is lower-level plumbing functions which should eventually give way to a higher level API.
 
-But code endeavours to approach better coverage eventually, and hopefully serve as a better documentation than Travis's own API
-docs, which were so lacklustre I had to resort to sniffing their websites traffic from my browser to understand what was going
+But code endeavors to approach better coverage eventually, and hopefully serve as a better documentation than Travis's own API
+docs, which were so lackluster I had to resort to sniffing their websites traffic from my browser to understand what was going
 on.
 
 =head1 AUTHENTICATION
@@ -124,7 +130,7 @@ So, at present, you have several options:
 
 =over 4
 
-=item 1. Work with an un-authenticated User Agent.
+=item 1. Work with an unauthenticated User Agent.
 
     use Net::Travis::API::UA;
 
@@ -140,9 +146,9 @@ So, at present, you have several options:
 
     $ua->get('/users'); # private endpoint
 
-=item 3. Get an auth token some other way.
+=item 3. Get an authorization token some other way.
 
-And avoid incuring an authorization request overhead.
+And avoid incurring an authorization request overhead.
 
     use Net::Travis::API::UA;
 
@@ -151,6 +157,8 @@ And avoid incuring an authorization request overhead.
     );
 
     $ua->get('/users'); # private endpoint
+
+=back
 
 =head1 AUTHOR
 

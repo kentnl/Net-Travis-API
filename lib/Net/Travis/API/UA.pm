@@ -1,4 +1,4 @@
-use 5.008;    # utf8
+use 5.010;    # mro
 use strict;
 use warnings;
 use utf8;
@@ -21,7 +21,7 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
-use Moo;
+use Moo qw( extends has );
 use mro;
 extends 'HTTP::Tiny';
 
@@ -61,9 +61,11 @@ extends 'HTTP::Tiny';
 use Carp qw(croak);
 
 sub _package_version {
-  my $vfield = sprintf q{$%s::VERSION}, __PACKAGE__;
-  if ( eval "defined $vfield" ) {
-    return eval "$vfield";
+  my $vfield = join q[::], __PACKAGE__, q[VERSION];
+  ## no critic (BuiltinFunctions::ProhibitStringyEval,Lax::ProhibitStringyEval::ExceptForRequire)
+  if ( eval "defined \$$vfield" ) {
+    ## no critic(ErrorHandling::RequireCheckingReturnValueOfEval)
+    return eval "\$$vfield";
   }
   return;
 }
@@ -73,17 +75,18 @@ sub _ua_version {
   return 0 if not defined $self->_package_version;
   return $self->_package_version;
 }
-sub _ua_name { __PACKAGE__ }
+sub _ua_name { return __PACKAGE__ }
 
 sub _ua_flags {
+  my ( $self, ) = @_;
   my $flags = ['cpan'];
-  push @{$flags}, 'dev' if not defined $_[0]->_package_version;
+  push @{$flags}, 'dev' if not defined $self->_package_version;
   return $flags;
 }
 
 sub _agent {
   my ($self) = @_;
-  my $own_ua = sprintf '%s/%s (%s)', $_[0]->_ua_name, $_[0]->_ua_version, ( join q{; }, @{ $_[0]->_ua_flags } );
+  my $own_ua = sprintf '%s/%s (%s)', $self->_ua_name, $self->_ua_version, ( join q{; }, @{ $self->_ua_flags } );
   my @agent_strings = ($own_ua);
   for my $class ( @{ mro::get_linear_isa(__PACKAGE__) } ) {
     next unless $class->can('_agent');
@@ -117,6 +120,12 @@ has 'http_prefix' => (
 
 
 
+
+
+
+
+
+
 has 'authtokens' => (
   is        => rw =>,
   predicate => 'has_authtokens',
@@ -131,12 +140,12 @@ has 'authtokens' => (
 
 
 has 'json' => (
-    is => ro =>,
-    lazy => 1,
-    builder => sub {
-        require JSON;
-        return JSON->new();
-    },
+  is      => ro =>,
+  lazy    => 1,
+  builder => sub {
+    require JSON;
+    return JSON->new();
+  },
 );
 
 sub _add_auth_tokens {
@@ -159,16 +168,16 @@ sub _expand_uri {
 }
 
 sub FOREIGNBUILDARGS {
-  my ( $self, @elems ) = @_;
+  my ( undef, @elems ) = @_;
   my $hash;
-  if ( @elems == 1 and ref $elems[0] ) {
+  if ( 1 == @elems and ref $elems[0] ) {
     $hash = $elems[0];
   }
   elsif ( @elems % 2 == 0 ) {
     $hash = {@elems};
   }
   else {
-    croak "Uneven number of parameters or non-ref passed";
+    croak q[Uneven number of parameters or non-ref passed];
   }
   my %not = map { $_ => 1 } qw( http_prefix authtokens );
   my %out;
@@ -194,9 +203,13 @@ sub request {
   require Net::Travis::API::UA::Response;
   return Net::Travis::API::UA::Response->new(
     json => $self->json,
-    %{$result}
+    %{$result},
   );
 }
+
+
+
+
 
 no Moo;
 
@@ -241,13 +254,17 @@ This module does a few things:
 
 =item 2. Assume you want to use relative URI's to the travis service
 
-=item 3. Inject Auth tokens where possible.
+=item 3. Inject Authorization tokens where possible.
 
 =back
 
 All requests return L<< C<::Response>|Net::Travis::API::UA::Response >> objects.
 
 =head1 METHODS
+
+=head2 C<has_authtokens>
+
+A predicate that returns whether L<< C<authtokens>|/authtokens >> is set or not
 
 =head2 C<request>
 
@@ -264,7 +281,7 @@ I<Optional.>
 
 Determines the base URI to use for relative URIs.
 
-Defaults as C<https://api.travis-ci.org> but should be changed if you're using their paid-for service.
+Defaults as L<< C<https://api.travis-ci.org>|https://api.travis-ci.org >> but should be changed if you're using their paid-for service.
 
 =head2 C<authtokens>
 
@@ -288,6 +305,8 @@ Defines a JSON decoder object.
 
 
 =end MetaPOD::JSON
+
+=for Pod::Coverage FOREIGNBUILDARGS
 
 =head1 AUTHOR
 

@@ -88,6 +88,8 @@
             "HTTP::Tiny::UA::Response" : "0",
             "JSON" : "0",
             "Moo" : "0",
+            "Moo::Role" : "0",
+            "Scalar::Util" : "0",
             "URI" : "0",
             "mro" : "0",
             "perl" : "5.010",
@@ -113,6 +115,14 @@
    "provides" : {
       "Net::Travis::API" : {
          "file" : "lib/Net/Travis/API.pm",
+         "version" : "0.001000"
+      },
+      "Net::Travis::API::Auth::GitHub" : {
+         "file" : "lib/Net/Travis/API/Auth/GitHub.pm",
+         "version" : "0.001000"
+      },
+      "Net::Travis::API::Role::Client" : {
+         "file" : "lib/Net/Travis/API/Role/Client.pm",
          "version" : "0.001000"
       },
       "Net::Travis::API::UA" : {
@@ -184,7 +194,9 @@
          "List::Util" : "1.38",
          "Module::Build" : "0.4205",
          "Moo" : "1.004002",
+         "Moo::Role" : "1.004002",
          "Pod::Coverage::TrustPod" : "0.100003",
+         "Scalar::Util" : "1.38",
          "Test::CPAN::Changes" : "0.27",
          "Test::CPAN::Meta" : "0.23",
          "Test::Kwalitee" : "1.18",
@@ -355,6 +367,8 @@
                "Dist::Zilla::Plugin::Test::Compile::PerFile" : {
                   "file" : [
                      "lib/Net/Travis/API.pm",
+                     "lib/Net/Travis/API/Auth/GitHub.pm",
+                     "lib/Net/Travis/API/Role/Client.pm",
                      "lib/Net/Travis/API/UA.pm",
                      "lib/Net/Travis/API/UA/Response.pm"
                   ],
