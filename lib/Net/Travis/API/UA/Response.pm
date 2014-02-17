@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Net::Travis::API::UA::Response;
-$Net::Travis::API::UA::Response::VERSION = '0.001000';
+$Net::Travis::API::UA::Response::VERSION = '0.001001';
 # ABSTRACT: Subclass of HTTP::Tiny::UA::Response for utility methods
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -197,7 +197,7 @@ Net::Travis::API::UA::Response - Subclass of HTTP::Tiny::UA::Response for utilit
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 DESCRIPTION
 

@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Net::Travis::API::Role::Client;
-$Net::Travis::API::Role::Client::VERSION = '0.001000';
+$Net::Travis::API::Role::Client::VERSION = '0.001001';
 # ABSTRACT: Anything that fetches from Travis and returns JSON data
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -53,7 +53,7 @@ Net::Travis::API::Role::Client - Anything that fetches from Travis and returns J
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 ATTRIBUTES
 

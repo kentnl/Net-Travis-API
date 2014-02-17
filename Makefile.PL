@@ -28,6 +28,7 @@ my %WriteMakefileArgs = (
     "JSON" => 0,
     "Moo" => 0,
     "Moo::Role" => 0,
+    "Net::Travis::API::Exception" => 0,
     "Scalar::Util" => 0,
     "URI" => 0,
     "mro" => 0,
@@ -42,7 +43,7 @@ my %WriteMakefileArgs = (
     "Test::More" => "0.89",
     "version" => 0
   },
-  "VERSION" => "0.001000",
+  "VERSION" => "0.001001",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
@@ -60,6 +61,7 @@ my %FallbackPrereqs = (
   "List::Util" => 0,
   "Moo" => 0,
   "Moo::Role" => 0,
+  "Net::Travis::API::Exception" => 0,
   "Scalar::Util" => 0,
   "Test::More" => "0.89",
   "URI" => 0,

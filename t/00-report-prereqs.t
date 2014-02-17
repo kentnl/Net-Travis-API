@@ -115,6 +115,7 @@ my $static_prereqs = do { my $x = {
                                       'JSON' => '0',
                                       'Moo' => '0',
                                       'Moo::Role' => '0',
+                                      'Net::Travis::API::Exception' => '0',
                                       'Scalar::Util' => '0',
                                       'URI' => '0',
                                       'mro' => '0',
