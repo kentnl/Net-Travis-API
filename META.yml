@@ -56,7 +56,6 @@ resources:
 version: '0.001001'
 x_BuiltWith:
   failures:
-    HTTP::Tiny::UA::Response: 'module was not found in INC'
     Net::Travis::API::Exception: 'module was not found in INC'
   modules:
     CPAN::Meta: '2.133380'
@@ -109,6 +108,7 @@ x_BuiltWith:
     ExtUtils::MakeMaker: '6.88'
     File::Spec::Functions: '3.47'
     HTTP::Tiny: '0.042'
+    HTTP::Tiny::UA::Response: '0.001'
     JSON: '2.90'
     List::Util: '1.38'
     Moo: '1.004002'
