@@ -56,6 +56,7 @@ resources:
 version: '0.001001'
 x_BuiltWith:
   failures:
+    HTTP::Tiny::UA::Response: 'module was not found in INC'
     Net::Travis::API::Exception: 'module was not found in INC'
   modules:
     CPAN::Meta: '2.133380'
@@ -92,7 +93,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled: '0.001000'
     Dist::Zilla::Plugin::ReadmeAnyFromPod: '0.133360'
     Dist::Zilla::Plugin::ReadmeFromPod: '0.21'
-    Dist::Zilla::Plugin::RunExtraTests: '0.017'
+    Dist::Zilla::Plugin::RunExtraTests: '0.018'
     Dist::Zilla::Plugin::Test::CPAN::Changes: '0.008'
     Dist::Zilla::Plugin::Test::Compile::PerFile: '0.001001'
     Dist::Zilla::Plugin::Test::Kwalitee: '2.07'
@@ -106,9 +107,8 @@ x_BuiltWith:
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 1.7.2
     Encode: '2.57'
     ExtUtils::MakeMaker: '6.88'
-    File::Spec::Functions: '3.40'
-    HTTP::Tiny: '0.039'
-    HTTP::Tiny::UA::Response: '0.001'
+    File::Spec::Functions: '3.47'
+    HTTP::Tiny: '0.042'
     JSON: '2.90'
     List::Util: '1.38'
     Moo: '1.004002'
@@ -122,27 +122,27 @@ x_BuiltWith:
     Test::Pod: '1.48'
     Test::Pod::Coverage: '1.08'
     URI: '1.60'
-    mro: '1.14'
+    mro: '1.15'
     strict: '1.08'
     utf8: '1.13'
     version: '0.9908'
-    warnings: '1.21'
+    warnings: '1.22'
   perl:
-    original: v5.19.8
+    original: v5.19.9
     qv: 1
     version:
       - 5
       - 19
-      - 8
+      - 9
   perl-config:
-    gccversion: 4.7.3
+    gccversion: 4.8.2
     myarchname: x86_64-linux
     osname: linux
   platform: linux
   uname: 'Linux 3.13.0-gentoo-r1 x86_64 GenuineIntel GNU/Linux'
 x_Dist_Zilla:
   perl:
-    version: '5.019008'
+    version: '5.019009'
   plugins:
     -
       class: Dist::Zilla::Plugin::Git::NextVersion::Sanitized
@@ -402,7 +402,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::RunExtraTests
       name: '@Author::KENTNL/RunExtraTests'
-      version: '0.017'
+      version: '0.018'
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@Author::KENTNL/TestRelease'
