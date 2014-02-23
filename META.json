@@ -16,7 +16,7 @@
    "prereqs" : {
       "configure" : {
          "recommends" : {
-            "ExtUtils::MakeMaker" : "6.88"
+            "ExtUtils::MakeMaker" : "6.90"
          },
          "requires" : {
             "ExtUtils::MakeMaker" : "6.30"
@@ -100,7 +100,7 @@
          "recommends" : {
             "CPAN::Meta" : "0",
             "CPAN::Meta::Requirements" : "2.120900",
-            "ExtUtils::MakeMaker" : "6.88",
+            "ExtUtils::MakeMaker" : "6.90",
             "Test::More" : "1.001002"
          },
          "requires" : {
@@ -199,10 +199,10 @@
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.012000",
          "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "1.7.2",
          "Encode" : "2.57",
-         "ExtUtils::MakeMaker" : "6.88",
+         "ExtUtils::MakeMaker" : "6.90",
          "File::Spec::Functions" : "3.47",
-         "HTTP::Tiny" : "0.042",
-         "HTTP::Tiny::UA::Response" : "0.001",
+         "HTTP::Tiny" : "0.043",
+         "HTTP::Tiny::UA::Response" : "0.002",
          "JSON" : "2.90",
          "List::Util" : "1.38",
          "Moo" : "1.004002",

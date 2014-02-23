@@ -45,7 +45,7 @@ my %exclude = map {; $_ => 1 } qw(
 my $static_prereqs = do { my $x = {
        'configure' => {
                         'recommends' => {
-                                          'ExtUtils::MakeMaker' => '6.88'
+                                          'ExtUtils::MakeMaker' => '6.90'
                                         },
                         'requires' => {
                                         'ExtUtils::MakeMaker' => '6.30'
@@ -129,7 +129,7 @@ my $static_prereqs = do { my $x = {
                    'recommends' => {
                                      'CPAN::Meta' => '0',
                                      'CPAN::Meta::Requirements' => '2.120900',
-                                     'ExtUtils::MakeMaker' => '6.88',
+                                     'ExtUtils::MakeMaker' => '6.90',
                                      'Test::More' => '1.001002'
                                    },
                    'requires' => {
