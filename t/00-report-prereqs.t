@@ -45,7 +45,7 @@ my %exclude = map {; $_ => 1 } qw(
 my $static_prereqs = do { my $x = {
        'configure' => {
                         'recommends' => {
-                                          'ExtUtils::MakeMaker' => '6.90'
+                                          'ExtUtils::MakeMaker' => '6.96'
                                         },
                         'requires' => {
                                         'ExtUtils::MakeMaker' => '6.30'
@@ -94,7 +94,7 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Plugin::TestRelease' => '0',
                                       'Dist::Zilla::Plugin::Twitter' => '0',
                                       'Dist::Zilla::Plugin::UploadToCPAN' => '0',
-                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.012000',
+                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.013003',
                                       'Pod::Coverage::TrustPod' => '0',
                                       'Test::CPAN::Changes' => '0.19',
                                       'Test::CPAN::Meta' => '0',
@@ -109,7 +109,6 @@ my $static_prereqs = do { my $x = {
        'runtime' => {
                       'requires' => {
                                       'Carp' => '0',
-                                      'Data::Dump' => '0',
                                       'Encode' => '0',
                                       'HTTP::Tiny' => '0',
                                       'HTTP::Tiny::UA::Response' => '0',
@@ -117,10 +116,8 @@ my $static_prereqs = do { my $x = {
                                       'Moo' => '0',
                                       'Moo::Role' => '0',
                                       'Scalar::Util' => '0',
-                                      'Sub::Exporter::Progressive' => '0',
                                       'URI' => '0',
                                       'mro' => '0',
-                                      'overload' => '0',
                                       'perl' => '5.010',
                                       'strict' => '0',
                                       'utf8' => '0',
@@ -131,8 +128,8 @@ my $static_prereqs = do { my $x = {
                    'recommends' => {
                                      'CPAN::Meta' => '0',
                                      'CPAN::Meta::Requirements' => '2.120900',
-                                     'ExtUtils::MakeMaker' => '6.90',
-                                     'Test::More' => '1.001002'
+                                     'ExtUtils::MakeMaker' => '6.96',
+                                     'Test::More' => '1.001003'
                                    },
                    'requires' => {
                                    'ExtUtils::MakeMaker' => '0',

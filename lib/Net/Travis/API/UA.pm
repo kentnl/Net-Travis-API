@@ -22,13 +22,8 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 use Moo qw( extends has );
-use Net::Travis::API::Exception qw( fatal );
 use mro;
 extends 'HTTP::Tiny';
-
-
-
-
 
 
 
@@ -162,7 +157,7 @@ sub _add_auth_tokens {
   }
   return $options unless $self->has_authtokens;
   return $options if exists $options->{headers} and exists $options->{headers}->{Authorization};
-  $options->{headers}->{Authorization} = [ map { 'token ' . $_ } @{ $self->authtokens || [] } ];
+  $options->{headers}->{Authorization} = [ map { 'token ' . $_ } @{ $self->authtokens } ];
   return $options;
 }
 
@@ -206,141 +201,9 @@ sub request {
   my ( $self, $method, $uri, $opts ) = @_;
   my $result = $self->SUPER::request( $method, $self->_expand_uri($uri), $self->_add_auth_tokens($opts) );
   require Net::Travis::API::UA::Response;
-  my $r = Net::Travis::API::UA::Response->new(
+  return Net::Travis::API::UA::Response->new(
     json => $self->json,
     %{$result},
-  );
-  if ( $r->status != 200 ) {
-    fatal(
-      'http_failure' => {
-        request => {
-          method   => $method,
-          uri      => $uri,
-          real_uri => $self->_expand_uri($uri),
-          options  => $opts,
-        },
-        response => $r
-      }
-    );
-  }
-  return $r;
-}
-
-sub request_json {
-  my ( $self, $method, $uri, $opts ) = @_;
-  my $response = $self->request( $method, $uri, $opts );
-  if ( not length $response->content ) {
-    fatal(
-      http_no_content => {
-        response => $response,
-        request  => {
-          method => $method,
-          uri    => $uri,
-          opts   => $opts
-        }
-      }
-    );
-  }
-  my $json = $response->content_json;
-  if ( not defined $json ) {
-    fatal(
-      content_json_expected => {
-        response => $response,
-        request  => {
-          method => $method,
-          uri    => $uri,
-          opts   => $opts
-        }
-      }
-    );
-  }
-  return $json;
-}
-
-for my $sub_name (qw/get head put post delete/) {
-  my $req_method = uc $sub_name;
-  no strict 'refs';
-  eval <<"HERE";    ## no critic
-    sub ${sub_name} _json {
-      my ( \$self, \$url, \$args ) = \@_;
-      if ( \@_ < 2 ) {
-        fatal(
-          arg_count_minimum => {
-            minimum   => 2,
-            count     => scalar \@_,
-            signature => '->(url,?args)'
-          }
-        );
-      }
-      if ( \@_ > 3 ) {
-        fatal(
-          arg_count_maximum => {
-            maximum   => 3,
-            count     => scalar \@_,
-            signature => '->(url,?args)'
-          }
-        );
-      }
-      if ( defined \$args and ( not ref \$args or ref \$args ne 'HASH' ) ) {
-        fatal(
-          arg_wrong_type => {
-            got => ( ref \$args ? ref \$args : 'scalar' ),
-            want     => 'HASH',
-            arg_name => '\args',
-            arg_pos  => 3
-          }
-        );
-      }
-      return \$self->request_json( '$req_method', \$url, \$args || {} );
-    }
-HERE
-}
-
-sub post_form_json {
-  my ( $self, $url, $data, $args ) = @_;
-  if ( @_ < 3 ) {
-    fatal(
-      arg_count_minimum => {
-        minimum   => 3,
-        count     => scalar @_,
-        signature => '->(url,data,?args)'
-      }
-    );
-  }
-  if ( @_ > 4 ) {
-    fatal(
-      arg_count_maximum => {
-        maximum   => 4,
-        count     => scalar @_,
-        signature => '->(url,data,?args)'
-      }
-    );
-  }
-  if ( defined $args and ( not ref $args or ref $args ne 'HASH' ) ) {
-    fatal(
-      arg_wrong_type => {
-        got => ( ref $args ? ref $args : 'scalar' ),
-        want     => 'HASH',
-        arg_name => '$args',
-        arg_pos  => 4
-      }
-    );
-  }
-
-  my $headers = {};
-  while ( my ( $key, $value ) = each %{ $args->{headers} || {} } ) {
-    $headers->{ lc $key } = $value;
-  }
-  delete $args->{headers};
-
-  return $self->request_json(
-    'POST' => $url => {
-      %$args,
-      content => $self->www_form_urlencode($data),
-      headers => {
-        %$headers, 'content-type' => 'application/x-www-form-urlencoded'
-      },
-    }
   );
 }
 
@@ -376,10 +239,6 @@ version 0.001001
         authtokens => [ 'sometoken' ]               # multiple supported, but it may not mean anything for travis
     );
 
-    # Easy
-    print pp( $ua->get_json('/users') );
-
-    # Fine Control
     my $result = $ua->get('/users');
     if ( $result->content_type eq 'application/json' ) {
         print pp( $result->content_json );

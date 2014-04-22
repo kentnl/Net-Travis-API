@@ -11,7 +11,6 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moo qw( with );
 use Scalar::Util qw(blessed);
-use Net::Travis::API::Exception qw( fatal );
 
 with 'Net::Travis::API::Role::Client';
 
@@ -28,6 +27,11 @@ with 'Net::Travis::API::Role::Client';
 
 
 
+sub _get_token_for {
+  my ( $self, $gh_token ) = @_;
+  return $self->http_engine->post_form( '/auth/github', { github_token => $gh_token } );
+}
+
 
 
 
@@ -38,18 +42,13 @@ with 'Net::Travis::API::Role::Client';
 
 sub get_token_for {
   my ( $self, $gh_token ) = @_;
-  if ( @_ < 2 ) {
-    fatal( arg_count_minimum => { minimum => 2, count => scalar @_ } );
-  }
-  if ( not defined $gh_token or not length $gh_token ) {
-    fatal( arg_length_nonzero => { required_arg => 'gh_token', arg_pos => 1 }, );
-  }
   if ( not blessed $self ) {
     $self = $self->new();
   }
-  my $json = $self->http_engine->post_form_json( '/auth/github', { github_token => $gh_token } );
-  fatal( json_field_expected => { field => 'access_token', json => $json } ) if not exists $json->{access_token};
-
+  my $result = $self->_get_token_for($gh_token);
+  return if not '200' eq $result->status;
+  return if not length $result->content;
+  return unless my $json = $result->content_json;
   return $json->{access_token};
 }
 
@@ -66,12 +65,6 @@ sub get_token_for {
 
 sub get_authorised_ua_for {
   my ( $self, $gh_token ) = @_;
-  if ( @_ < 2 ) {
-    fatal( arg_count_minimum => { minimum => 2, count => scalar @_ } );
-  }
-  if ( not defined $gh_token or not length $gh_token ) {
-    fatal( arg_length_nonzero => { required_arg => 'gh_token', arg_pos => 1 }, );
-  }
   $self = $self->new() if not blessed $self;
   my $token = $self->get_token_for($gh_token);
   $self->http_engine->authtokens( [$token] );
