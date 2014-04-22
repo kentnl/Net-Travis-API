@@ -38,7 +38,7 @@ extends 'HTTP::Tiny';
     my $result = $ua->get('/users');
     if ( $result->content_type eq 'application/json' ) {
         print pp( $result->content_json );
-    else {
+    } else {
         print pp( $result );
     }
 
