@@ -2,7 +2,7 @@ NAME
     Net::Travis::API - Low Level Plumbing for travis-ci.org's api
 
 VERSION
-    version 0.001000
+    version 0.001001
 
 DEVELOPMENT
     This code is highly in-development, and is feature incomplete, and does

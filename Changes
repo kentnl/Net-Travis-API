@@ -1,5 +1,16 @@
 Release history for Net-Travis-API
 
+0.001001 2014-04-22T11:33:16Z
+ [01 Documentation Fix]
+ - Unclosed "if { }" in the synopsis for UA.pm, thanks Brendan Byrd
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.001000, see Changes.deps{,.all,.dev} for
+   details
+ - configure: (recommends: ↑1)
+ - develop: ↑1
+ - test: (recommends: ↑2)
+
 0.001000 2014-02-13T17:16:48Z
  - Super Early First Release with minimal utility available.
 

@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Net::Travis::API;
-$Net::Travis::API::VERSION = '0.001000';
+$Net::Travis::API::VERSION = '0.001001';
 # ABSTRACT: Low Level Plumbing for travis-ci.org's api
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -95,7 +95,7 @@ Net::Travis::API - Low Level Plumbing for travis-ci.org's api
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =begin MetaPOD::JSON v1.1.0
 

@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Net::Travis::API::Auth::GitHub;
-$Net::Travis::API::Auth::GitHub::VERSION = '0.001000';
+$Net::Travis::API::Auth::GitHub::VERSION = '0.001001';
 # ABSTRACT: Authorize with Travis using a GitHub token
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -87,7 +87,7 @@ Net::Travis::API::Auth::GitHub - Authorize with Travis using a GitHub token
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 METHODS
 

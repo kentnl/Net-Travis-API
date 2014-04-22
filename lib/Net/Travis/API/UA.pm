@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Net::Travis::API::UA;
-$Net::Travis::API::UA::VERSION = '0.001000';
+$Net::Travis::API::UA::VERSION = '0.001001';
 # ABSTRACT: Travis Specific User Agent that handles authorization
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -227,7 +227,7 @@ Net::Travis::API::UA - Travis Specific User Agent that handles authorization
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 SYNOPSIS
 
@@ -242,7 +242,7 @@ version 0.001000
     my $result = $ua->get('/users');
     if ( $result->content_type eq 'application/json' ) {
         print pp( $result->content_json );
-    else {
+    } else {
         print pp( $result );
     }
 
