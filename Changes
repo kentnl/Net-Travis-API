@@ -1,6 +1,8 @@
 Release history for Net-Travis-API
 
 {{$NEXT}}
+
+0.001001 2014-04-22T11:33:16Z
  [01 Documentation Fix]
  - Unclosed "if { }" in the synopsis for UA.pm, thanks Brendan Byrd
 
