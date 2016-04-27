@@ -1,7 +1,6 @@
 use 5.010;    # mro
 use strict;
 use warnings;
-use utf8;
 
 package Net::Travis::API::UA;
 

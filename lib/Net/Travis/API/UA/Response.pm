@@ -1,7 +1,6 @@
 use 5.010;    # _Pulp__5010_qr_m_propagate_properly
 use strict;
 use warnings;
-use utf8;
 
 package Net::Travis::API::UA::Response;
 

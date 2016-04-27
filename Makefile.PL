@@ -28,7 +28,6 @@ my %WriteMakefileArgs = (
     "URI" => 0,
     "mro" => 0,
     "strict" => 0,
-    "utf8" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
@@ -58,7 +57,6 @@ my %FallbackPrereqs = (
   "URI" => 0,
   "mro" => 0,
   "strict" => 0,
-  "utf8" => 0,
   "warnings" => 0
 );
 

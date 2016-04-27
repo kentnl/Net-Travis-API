@@ -48,7 +48,6 @@ requires:
   mro: '0'
   perl: '5.010'
   strict: '0'
-  utf8: '0'
   warnings: '0'
 resources:
   bugtracker: https://github.com/kentnl/Net-Travis-API/issues
