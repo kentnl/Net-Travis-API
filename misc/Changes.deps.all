@@ -49,6 +49,9 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Dist::Zilla::Plugin::MetaData::BuiltWith 0 → 1.004000
  - Test::Kwalitee 1.12 → 1.21
 
+ [Changed / runtime requires]
+ - Moo 0 → 1.000008
+
  [Changed / test recommends]
  - CPAN::Meta 0 → 2.120900
  - ExtUtils::MakeMaker 6.96 → 7.00
