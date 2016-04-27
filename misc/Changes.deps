@@ -4,6 +4,9 @@ This file contains changes in REQUIRED dependencies for standard CPAN phases (co
  [Added / configure requires]
  - perl 5.010
 
+ [Added / runtime requires]
+ - JSON::MaybeXS
+
  [Added / test requires]
  - File::Spec
  - perl 5.010
@@ -15,6 +18,7 @@ This file contains changes in REQUIRED dependencies for standard CPAN phases (co
  - Moo 0 → 1.000008
 
  [Removed / runtime requires]
+ - JSON
  - utf8
 
  [Removed / test requires]

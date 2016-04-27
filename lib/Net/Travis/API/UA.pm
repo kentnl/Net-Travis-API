@@ -161,8 +161,8 @@ has 'json' => (
   is      => ro =>,
   lazy    => 1,
   builder => sub {
-    require JSON;
-    return JSON->new();
+    require JSON::MaybeXS;
+    return JSON::MaybeXS->new();
   },
 );
 
