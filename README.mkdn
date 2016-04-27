@@ -4,7 +4,7 @@ Net::Travis::API - Low Level Plumbing for travis-ci.org's api
 
 # VERSION
 
-version 0.002000
+version 0.002001
 
 # DEVELOPMENT
 
