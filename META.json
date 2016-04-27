@@ -927,6 +927,9 @@
          "version" : "5.043"
       }
    },
-   "x_authority" : "cpan:KENTNL"
+   "x_authority" : "cpan:KENTNL",
+   "x_contributors" : [
+      "Zakariyya Mughal <zaki.mughal@gmail.com>"
+   ]
 }
 

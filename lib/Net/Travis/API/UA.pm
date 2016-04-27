@@ -125,6 +125,23 @@ has 'http_prefix' => (
 
 
 
+has 'http_default_accept_headers' => (
+  is      => ro  =>,
+  lazy    => 1,
+  builder => sub { return 'application/vnd.travis-ci.2+json' },
+);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -181,13 +198,21 @@ sub FOREIGNBUILDARGS {
   else {
     croak q[Uneven number of parameters or non-ref passed];
   }
-  my %not = map { $_ => 1 } qw( http_prefix authtokens );
+  my %not = map { $_ => 1 } qw( http_prefix http_default_accept_headers authtokens );
   my %out;
   for my $key ( keys %{$hash} ) {
     next if $not{$key};
     $out{$key} = $hash->{$key};
   }
   return %out;
+}
+
+sub BUILD {
+  my ($self) = @_;
+  if( not exists $self->{default_headers}{Accept} ) {
+    $self->{default_headers}{Accept} = $self->http_default_accept_headers;
+  }
+  return;
 }
 
 
@@ -285,6 +310,15 @@ Determines the base URI to use for relative URIs.
 
 Defaults as L<< C<https://api.travis-ci.org>|https://api.travis-ci.org >> but should be changed if you're using their paid-for service.
 
+=head2 C<http_default_accept_headers>
+
+I<Optional.>
+
+Sets the default C< Accept > headers to send to the Travis-CI service.
+
+Defaults to C<application/vnd.travis-ci.2+json> as per the API documentation.
+Without this, the deprecated version 1 API will be used instead.
+
 =head2 C<authtokens>
 
 I<Optional.>
@@ -308,7 +342,7 @@ Defines a JSON decoder object.
 
 =end MetaPOD::JSON
 
-=for Pod::Coverage FOREIGNBUILDARGS
+=for Pod::Coverage FOREIGNBUILDARGS BUILD
 
 =head1 AUTHOR
 
