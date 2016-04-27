@@ -5,6 +5,8 @@ use utf8;
 
 package Net::Travis::API::Auth::GitHub;
 
+our $VERSION = '0.002000';
+
 # ABSTRACT: Authorize with Travis using a GitHub token
 
 # AUTHORITY

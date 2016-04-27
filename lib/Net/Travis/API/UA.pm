@@ -5,6 +5,8 @@ use utf8;
 
 package Net::Travis::API::UA;
 
+our $VERSION = '0.002000';
+
 # ABSTRACT: Travis Specific User Agent that handles authorization
 
 # AUTHORITY

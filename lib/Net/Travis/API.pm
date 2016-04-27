@@ -5,6 +5,8 @@ use utf8;
 
 package Net::Travis::API;
 
+our $VERSION = '0.002000';
+
 # ABSTRACT: Low Level Plumbing for travis-ci.org's api
 
 # AUTHORITY

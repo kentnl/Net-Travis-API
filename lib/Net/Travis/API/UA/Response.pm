@@ -5,6 +5,8 @@ use utf8;
 
 package Net::Travis::API::UA::Response;
 
+our $VERSION = '0.002000';
+
 # ABSTRACT: Subclass of HTTP::Tiny::UA::Response for utility methods
 
 # AUTHORITY

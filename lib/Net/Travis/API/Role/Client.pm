@@ -5,6 +5,8 @@ use utf8;
 
 package Net::Travis::API::Role::Client;
 
+our $VERSION = '0.002000';
+
 # ABSTRACT: Anything that fetches from Travis and returns JSON data
 
 # AUTHORITY
