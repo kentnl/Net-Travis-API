@@ -29,3 +29,4 @@ twitter_extra_hash_tags = #travisci
 ; auto_prereqs_skip = File::Find
 
 [Prereqs]
+Moo = 1.000008
