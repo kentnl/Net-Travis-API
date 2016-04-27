@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Net::Travis::API::UA;
-$Net::Travis::API::UA::VERSION = '0.001001';
+
+our $VERSION = '0.002000';
+
 # ABSTRACT: Travis Specific User Agent that handles authorization
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -227,7 +229,7 @@ Net::Travis::API::UA - Travis Specific User Agent that handles authorization
 
 =head1 VERSION
 
-version 0.001001
+version 0.002000
 
 =head1 SYNOPSIS
 
@@ -310,11 +312,11 @@ Defines a JSON decoder object.
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2016 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
