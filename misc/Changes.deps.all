@@ -34,6 +34,9 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  [Added / runtime recommends]
  - Moo 1.000008
 
+ [Added / runtime requires]
+ - JSON::MaybeXS
+
  [Added / test requires]
  - File::Spec
  - perl 5.010
@@ -69,6 +72,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Dist::Zilla::PluginBundle::Author::KENTNL::Lite v1.3.0
 
  [Removed / runtime requires]
+ - JSON
  - utf8
 
  [Removed / test recommends]
