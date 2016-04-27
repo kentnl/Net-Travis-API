@@ -4,7 +4,7 @@ use warnings;
 
 package Net::Travis::API;
 
-our $VERSION = '0.002000';
+our $VERSION = '0.002001';
 
 # ABSTRACT: Low Level Plumbing for travis-ci.org's api
 

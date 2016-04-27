@@ -4,7 +4,7 @@ use warnings;
 
 package Net::Travis::API::UA;
 
-our $VERSION = '0.002000';
+our $VERSION = '0.002001';
 
 # ABSTRACT: Travis Specific User Agent that handles authorization
 

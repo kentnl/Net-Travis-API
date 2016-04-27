@@ -1,6 +1,8 @@
 Release history for Net-Travis-API
 
 {{$NEXT}}
+
+0.002000 2016-04-27T14:15:14Z 0742985
  - Now uses Travis-CI API-v2 by default for all queries. Can be overridden by explicit use of an alternative
    "http_default_accept_headers" or by having a predefined "Accept" value in HTTP::Tiny's default_headers parameter.
    @zmughal++ closes #3, closes #4
