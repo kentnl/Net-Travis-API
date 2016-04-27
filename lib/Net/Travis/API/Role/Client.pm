@@ -4,7 +4,7 @@ use warnings;
 
 package Net::Travis::API::Role::Client;
 
-our $VERSION = '0.002000';
+our $VERSION = '0.002001';
 
 # ABSTRACT: Anything that fetches from Travis and returns JSON data
 
@@ -54,7 +54,7 @@ Net::Travis::API::Role::Client - Anything that fetches from Travis and returns J
 
 =head1 VERSION
 
-version 0.002000
+version 0.002001
 
 =head1 ATTRIBUTES
 

@@ -4,7 +4,7 @@ use warnings;
 
 package Net::Travis::API;
 
-our $VERSION = '0.002000';
+our $VERSION = '0.002001';
 
 # ABSTRACT: Low Level Plumbing for travis-ci.org's api
 
@@ -96,7 +96,7 @@ Net::Travis::API - Low Level Plumbing for travis-ci.org's api
 
 =head1 VERSION
 
-version 0.002000
+version 0.002001
 
 =begin MetaPOD::JSON v1.1.0
 

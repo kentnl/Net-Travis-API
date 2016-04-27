@@ -4,7 +4,7 @@ use warnings;
 
 package Net::Travis::API::Auth::GitHub;
 
-our $VERSION = '0.002000';
+our $VERSION = '0.002001';
 
 # ABSTRACT: Authorize with Travis using a GitHub token
 
@@ -88,7 +88,7 @@ Net::Travis::API::Auth::GitHub - Authorize with Travis using a GitHub token
 
 =head1 VERSION
 
-version 0.002000
+version 0.002001
 
 =head1 METHODS
 

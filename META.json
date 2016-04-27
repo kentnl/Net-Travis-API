@@ -131,23 +131,23 @@
    "provides" : {
       "Net::Travis::API" : {
          "file" : "lib/Net/Travis/API.pm",
-         "version" : "0.002000"
+         "version" : "0.002001"
       },
       "Net::Travis::API::Auth::GitHub" : {
          "file" : "lib/Net/Travis/API/Auth/GitHub.pm",
-         "version" : "0.002000"
+         "version" : "0.002001"
       },
       "Net::Travis::API::Role::Client" : {
          "file" : "lib/Net/Travis/API/Role/Client.pm",
-         "version" : "0.002000"
+         "version" : "0.002001"
       },
       "Net::Travis::API::UA" : {
          "file" : "lib/Net/Travis/API/UA.pm",
-         "version" : "0.002000"
+         "version" : "0.002001"
       },
       "Net::Travis::API::UA::Response" : {
          "file" : "lib/Net/Travis/API/UA/Response.pm",
-         "version" : "0.002000"
+         "version" : "0.002001"
       }
    },
    "release_status" : "stable",
@@ -162,7 +162,7 @@
          "web" : "https://github.com/kentnl/Net-Travis-API"
       }
    },
-   "version" : "0.002000",
+   "version" : "0.002001",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
    },
@@ -679,7 +679,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "0.002000-source",
+                  "tag" : "0.002001-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v"
                },
@@ -770,7 +770,7 @@
                   "branch" : "releases",
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "0.002000",
+                  "tag" : "0.002001",
                   "tag_format" : "%v",
                   "tag_message" : "v%v"
                },
