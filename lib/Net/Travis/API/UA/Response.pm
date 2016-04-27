@@ -1,10 +1,11 @@
 use 5.010;    # _Pulp__5010_qr_m_propagate_properly
 use strict;
 use warnings;
-use utf8;
 
 package Net::Travis::API::UA::Response;
-$Net::Travis::API::UA::Response::VERSION = '0.001001';
+
+our $VERSION = '0.002000';
+
 # ABSTRACT: Subclass of HTTP::Tiny::UA::Response for utility methods
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -66,8 +67,8 @@ has 'json' => (
   is      => ro =>,
   lazy    => 1,
   builder => sub {
-    require JSON;
-    return JSON->new();
+    require JSON::MaybeXS;
+    return JSON::MaybeXS->new();
   },
 );
 
@@ -197,7 +198,7 @@ Net::Travis::API::UA::Response - Subclass of HTTP::Tiny::UA::Response for utilit
 
 =head1 VERSION
 
-version 0.001001
+version 0.002000
 
 =head1 DESCRIPTION
 
@@ -299,11 +300,11 @@ A JSON Object for decoding JSON
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2016 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

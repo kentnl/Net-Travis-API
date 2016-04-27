@@ -1,10 +1,11 @@
-use 5.008;    # utf8
+use 5.006;    # our
 use strict;
 use warnings;
-use utf8;
 
 package Net::Travis::API;
-$Net::Travis::API::VERSION = '0.001001';
+
+our $VERSION = '0.002000';
+
 # ABSTRACT: Low Level Plumbing for travis-ci.org's api
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -95,7 +96,7 @@ Net::Travis::API - Low Level Plumbing for travis-ci.org's api
 
 =head1 VERSION
 
-version 0.001001
+version 0.002000
 
 =begin MetaPOD::JSON v1.1.0
 
@@ -162,11 +163,11 @@ And avoid incurring an authorization request overhead.
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2016 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

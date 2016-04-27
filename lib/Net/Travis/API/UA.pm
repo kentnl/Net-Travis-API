@@ -1,10 +1,11 @@
 use 5.010;    # mro
 use strict;
 use warnings;
-use utf8;
 
 package Net::Travis::API::UA;
-$Net::Travis::API::UA::VERSION = '0.001001';
+
+our $VERSION = '0.002000';
+
 # ABSTRACT: Travis Specific User Agent that handles authorization
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -123,6 +124,23 @@ has 'http_prefix' => (
 
 
 
+has 'http_default_accept_headers' => (
+  is      => ro  =>,
+  lazy    => 1,
+  builder => sub { return 'application/vnd.travis-ci.2+json' },
+);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -143,8 +161,8 @@ has 'json' => (
   is      => ro =>,
   lazy    => 1,
   builder => sub {
-    require JSON;
-    return JSON->new();
+    require JSON::MaybeXS;
+    return JSON::MaybeXS->new();
   },
 );
 
@@ -179,13 +197,21 @@ sub FOREIGNBUILDARGS {
   else {
     croak q[Uneven number of parameters or non-ref passed];
   }
-  my %not = map { $_ => 1 } qw( http_prefix authtokens );
+  my %not = map { $_ => 1 } qw( http_prefix http_default_accept_headers authtokens );
   my %out;
   for my $key ( keys %{$hash} ) {
     next if $not{$key};
     $out{$key} = $hash->{$key};
   }
   return %out;
+}
+
+sub BUILD {
+  my ($self) = @_;
+  if( not exists $self->{default_headers}{Accept} ) {
+    $self->{default_headers}{Accept} = $self->http_default_accept_headers;
+  }
+  return;
 }
 
 
@@ -227,7 +253,7 @@ Net::Travis::API::UA - Travis Specific User Agent that handles authorization
 
 =head1 VERSION
 
-version 0.001001
+version 0.002000
 
 =head1 SYNOPSIS
 
@@ -283,6 +309,15 @@ Determines the base URI to use for relative URIs.
 
 Defaults as L<< C<https://api.travis-ci.org>|https://api.travis-ci.org >> but should be changed if you're using their paid-for service.
 
+=head2 C<http_default_accept_headers>
+
+I<Optional.>
+
+Sets the default C< Accept > headers to send to the Travis-CI service.
+
+Defaults to C<application/vnd.travis-ci.2+json> as per the API documentation.
+Without this, the deprecated version 1 API will be used instead.
+
 =head2 C<authtokens>
 
 I<Optional.>
@@ -306,15 +341,15 @@ Defines a JSON decoder object.
 
 =end MetaPOD::JSON
 
-=for Pod::Coverage FOREIGNBUILDARGS
+=for Pod::Coverage FOREIGNBUILDARGS BUILD
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2016 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
